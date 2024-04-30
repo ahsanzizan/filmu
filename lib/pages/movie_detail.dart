@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:movies/models/movie.dart';
 
 class MovieDetail extends StatelessWidget {
@@ -11,28 +14,194 @@ class MovieDetail extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(movie.title),
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.blue[400],
-        ),
-        body: SingleChildScrollView(
-          child: Center(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                Container(
-                    padding: const EdgeInsets.all(16),
-                    height: height / 1.5,
-                    child: Image.network(
-                      "https://image.tmdb.org/t/p/original$poster",
-                      width: MediaQuery.of(context).size.width,
-                    )),
-                Container(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: Text(movie.overview))
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image.asset(
+                        'lib/icons/Menu.png',
+                        height: 42,
+                        color: Colors.indigoAccent[300],
+                      ),
+                      Text(
+                        "Filmu",
+                        style: GoogleFonts.merriweather(
+                            textStyle: const TextStyle(
+                                fontSize: 24, fontWeight: FontWeight.w800)),
+                      ),
+                      Icon(
+                        Icons.person,
+                        size: 42,
+                        color: Colors.indigoAccent[300],
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width / 20),
+                      child: Image.network(
+                        "https://image.tmdb.org/t/p/original$poster",
+                        width: MediaQuery.of(context).size.width,
+                        height: height / 1.5,
+                      )),
+                ),
+                Column(
+                  children: [
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 12),
+                              child: Text(
+                                movie.title,
+                                overflow: TextOverflow.clip,
+                                textAlign: TextAlign.left,
+                                style: GoogleFonts.poppins(
+                                    textStyle: const TextStyle(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                            ),
+                          ),
+                          const Icon(
+                            Icons.bookmark_add,
+                            size: 24,
+                          )
+                        ]),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    Row(
+                      children: [
+                        Image.asset(
+                          'lib/icons/Star.png',
+                          height: 14,
+                          color: Colors.yellow,
+                        ),
+                        const SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          "${movie.voteAverage.round().toString()}/10 IMDb",
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black26,
+                            fontSize: 14,
+                          )),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Length",
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                      fontSize: 16, color: Colors.black38)),
+                            ),
+                            Text(
+                              "1h 42min",
+                              textAlign: TextAlign.justify,
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(fontSize: 16)),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          width: 24,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Language",
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                      fontSize: 16, color: Colors.black38)),
+                            ),
+                            Text(
+                              "English",
+                              textAlign: TextAlign.justify,
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(fontSize: 16)),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          width: 24,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Rating",
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                      fontSize: 16, color: Colors.black38)),
+                            ),
+                            Text(
+                              "PG-13",
+                              textAlign: TextAlign.justify,
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(fontSize: 16)),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Overview",
+                          textAlign: TextAlign.justify,
+                          style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          movie.overview,
+                          textAlign: TextAlign.justify,
+                          style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(fontSize: 14)),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 32,
+                    ),
+                  ],
+                )
               ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
