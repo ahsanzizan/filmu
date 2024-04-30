@@ -8,7 +8,7 @@ class Getter {
     HttpService httpService = HttpService();
     final getPopularMovies = await httpService.get('/popular');
     final parsePopularMovies = jsonDecode(getPopularMovies);
-    final popularMovies = parsePopularMovies['results'];
+    final popularMovies = parsePopularMovies['results'] as List<dynamic>;
     final List<Movie> movies =
         List<Movie>.from(popularMovies.map((movie) => Movie.fromJson(movie)));
 
