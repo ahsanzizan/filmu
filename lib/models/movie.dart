@@ -1,5 +1,5 @@
 class Movie {
-  String id;
+  int id;
   String title;
   double voteAverage;
   String overview;
@@ -13,9 +13,9 @@ class Movie {
     return Movie(
         parsedJson['id'],
         parsedJson['title'],
-        parsedJson['voteAverage'] * 1.0,
+        parsedJson['vote_average'] * 1.0,
         parsedJson['overview'],
-        parsedJson['poster'],
-        DateTime.parse(parsedJson['releaseDate']));
+        parsedJson['poster_path'],
+        DateTime.parse(parsedJson['release_date']));
   }
 }
