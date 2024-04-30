@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movies/models/movie.dart';
-import 'package:movies/pages/movie_detail.dart';
-import 'package:movies/services/getter.dart';
+import 'package:movies/pages/movie_detail_page.dart';
+import 'package:movies/services/getter_service.dart';
+import 'package:movies/widgets/margin_widget.dart';
+import 'package:movies/widgets/navbar_widget.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -36,33 +38,8 @@ class _HomeState extends State<Home> {
         body: SafeArea(
             child: Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(32),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(
-                'lib/icons/Menu.png',
-                height: 42,
-                color: Colors.indigoAccent[300],
-              ),
-              Text(
-                "Filmu",
-                style: GoogleFonts.merriweather(
-                    textStyle: const TextStyle(
-                        fontSize: 24, fontWeight: FontWeight.w800)),
-              ),
-              Icon(
-                Icons.person,
-                size: 42,
-                color: Colors.indigoAccent[300],
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
+        const Navbar(),
+        const VerticalMargin(20),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Row(
@@ -101,9 +78,7 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-        const SizedBox(
-          height: 40,
-        ),
+        const VerticalMargin(40),
         Expanded(
             child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -130,9 +105,7 @@ class _HomeState extends State<Home> {
                             width: MediaQuery.of(context).size.width * .30,
                           ),
                         ),
-                        const SizedBox(
-                          width: 16,
-                        ),
+                        const HorizontalMargin(16),
                         Flexible(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,9 +122,7 @@ class _HomeState extends State<Home> {
                                   )),
                                 ),
                               ),
-                              const SizedBox(
-                                height: 8,
-                              ),
+                              const VerticalMargin(8),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -160,9 +131,7 @@ class _HomeState extends State<Home> {
                                     height: 14,
                                     color: Colors.yellow,
                                   ),
-                                  const SizedBox(
-                                    width: 4,
-                                  ),
+                                  const HorizontalMargin(4),
                                   Container(
                                     padding: const EdgeInsets.only(right: 4.0),
                                     child: Text(
@@ -178,7 +147,7 @@ class _HomeState extends State<Home> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 8),
+                              const VerticalMargin(8),
                               Row(
                                 children: [
                                   Image.asset(
@@ -186,9 +155,7 @@ class _HomeState extends State<Home> {
                                     width: 12,
                                     color: Colors.black,
                                   ),
-                                  const SizedBox(
-                                    width: 4,
-                                  ),
+                                  const HorizontalMargin(4),
                                   Text(
                                     "1h 43m",
                                     style: GoogleFonts.poppins(

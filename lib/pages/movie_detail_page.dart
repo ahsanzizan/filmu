@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movies/models/movie.dart';
+import 'package:movies/widgets/margin_widget.dart';
+import 'package:movies/widgets/navbar_widget.dart';
 
 class MovieDetail extends StatelessWidget {
   final Movie movie;
@@ -18,30 +20,7 @@ class MovieDetail extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Image.asset(
-                        'lib/icons/Menu.png',
-                        height: 42,
-                        color: Colors.indigoAccent[300],
-                      ),
-                      Text(
-                        "Filmu",
-                        style: GoogleFonts.merriweather(
-                            textStyle: const TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.w800)),
-                      ),
-                      Icon(
-                        Icons.person,
-                        size: 42,
-                        color: Colors.indigoAccent[300],
-                      ),
-                    ],
-                  ),
-                ),
+                const Navbar(),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: ClipRRect(
@@ -77,9 +56,7 @@ class MovieDetail extends StatelessWidget {
                             size: 24,
                           )
                         ]),
-                    const SizedBox(
-                      height: 4,
-                    ),
+                    const VerticalMargin(4),
                     Row(
                       children: [
                         Image.asset(
@@ -87,9 +64,7 @@ class MovieDetail extends StatelessWidget {
                           height: 14,
                           color: Colors.yellow,
                         ),
-                        const SizedBox(
-                          width: 4,
-                        ),
+                        const HorizontalMargin(4),
                         Text(
                           "${movie.voteAverage.round().toString()}/10 IMDb",
                           overflow: TextOverflow.ellipsis,
@@ -102,9 +77,7 @@ class MovieDetail extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 16,
-                    ),
+                    const VerticalMargin(16),
                     Row(
                       children: [
                         Column(
@@ -124,9 +97,7 @@ class MovieDetail extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          width: 24,
-                        ),
+                        const HorizontalMargin(24),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -144,9 +115,7 @@ class MovieDetail extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          width: 24,
-                        ),
+                        const HorizontalMargin(24),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -166,9 +135,7 @@ class MovieDetail extends StatelessWidget {
                         )
                       ],
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    const VerticalMargin(20),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -179,9 +146,7 @@ class MovieDetail extends StatelessWidget {
                               textStyle: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold)),
                         ),
-                        const SizedBox(
-                          height: 8,
-                        ),
+                        const VerticalMargin(8),
                         Text(
                           movie.overview,
                           textAlign: TextAlign.justify,
@@ -190,9 +155,7 @@ class MovieDetail extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 32,
-                    ),
+                    const VerticalMargin(32),
                   ],
                 )
               ],
